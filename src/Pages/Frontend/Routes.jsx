@@ -5,6 +5,7 @@ import About from "./About"
 import Contact from "./Contact"
 import NoPage from './NoPage'
 import Navbar from '../../Components/Navbar/Navbar'
+import Footer from '../../Components/Footer/Footer'
 export default function Index() {
     return (
         <main>
@@ -15,6 +16,7 @@ export default function Index() {
                 <Route path='contact' element={<Contact />} />
                 <Route path='*' element={<NoPage />} />
             </Routes>
+            <Footer/>
         </main>
     )
 }
