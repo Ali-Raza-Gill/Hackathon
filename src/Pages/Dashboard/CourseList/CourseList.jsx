@@ -9,14 +9,14 @@ let initialstate = {
     coursedescription: ""
 }
 export default function CourseList() {
-    const [course, setCourse] = useState(initialstate);
+    const [editCourse, setEditCourse] = useState(initialstate);
     const [documents, setDocuments] = useState([]);
     const [isLoading, setIsLoading] = useState(false)
     const [isProcessingUpdate, setIsProcessingUpdate] = useState(false)
 
 
     const handlechange = (e) => {
-        setCourse(s => ({ ...s, [e.target.name]: e.target.value }))
+        setEditCourse(s => ({ ...s, [e.target.name]: e.target.value }))
     }
 
     const fetchDocuments = async () => {
@@ -56,7 +56,7 @@ export default function CourseList() {
 
 
     const handleUpdate = async () => {
-        const course = { ...setCourse }
+        const course = { ...setEditCourse }
         course.dateCreated = course.dateCreated
         course.dateModified = serverTimestamp()
         // course.modifiedBy = {
@@ -85,6 +85,10 @@ export default function CourseList() {
         setIsProcessingUpdate(false)
     }
 
+    const updateCourseHandler = (c) => {
+        console.log("course : ", c);
+        setEditCourse(c)
+    }
 
     return (
         <>
@@ -116,7 +120,10 @@ export default function CourseList() {
                                                     <td>{Course.coursename}</td>
                                                     <td>{Course.coursecode}</td>
                                                     <td>{Course.coursedescription}</td>
-                                                    <td><button className='btn btn-info btn-sm me-1' type='button' onClick={() => { setCourse(Course) }} data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button><button className='btn btn-danger btn-sm ' onClick={() => { handleCourseDelete(Course.id) }}>Delete</button></td>
+                                                    <td>
+                                                        <button className='btn btn-info btn-sm me-1' type='button' onClick={() => { updateCourseHandler(Course) }} data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                                                        <button className='btn btn-danger btn-sm ' onClick={() => { handleCourseDelete(Course.id) }}>Delete</button>
+                                                    </td>
                                                 </tr>
                                             })
                                             }
@@ -141,15 +148,15 @@ export default function CourseList() {
                         <div className="modal-body">
                             <div className="row mb-3">
                                 <div className="col">
-                                    <input type="text" id='coursename' name='coursename' className='w-100 py-2  px-3' onChange={handlechange} value={setCourse.coursename} placeholder='Enter Course Name' />
+                                    <input type="text" id='coursename' name='coursename' className='w-100 py-2  px-3' onChange={handlechange} value={editCourse.coursename} placeholder='Enter Course Name' />
                                 </div>
                                 <div className="col">
-                                    <input type="text" id='coursecode' name='coursecode' className='w-100 py-2 px-3' onChange={handlechange} value={setCourse.coursecode} placeholder='Enter Course Code' />
+                                    <input type="text" id='coursecode' name='coursecode' className='w-100 py-2 px-3' onChange={handlechange} value={editCourse.coursecode} placeholder='Enter Course Code' />
                                 </div>
                             </div>
                             <div className="row ">
                                 <div className="col">
-                                    <textarea name="coursediscription" className='w-100 px-3 py-3' id="coursediscription" cols="30" rows="10" onChange={handlechange} value={setCourse.coursedescription} placeholder='Enter Course Discription '></textarea>
+                                    <textarea name="coursediscription" className='w-100 px-3 py-3' id="coursediscription" cols="30" rows="10" onChange={handlechange} value={editCourse.coursedescription} placeholder='Enter Course Discription '></textarea>
                                 </div>
                             </div>
                         </div>
