@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../Config/firebase"
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const initialState = {
   name: "",
@@ -42,10 +43,11 @@ export default function Register() {
   }
 
   return (
+    <div className='bg'>
     <div className="container">
       <div className="row">
         <div className="col col-md-6 offset-md-3 col-lg-4 offset-lg-4 ">
-          <div className="card p-2 p-md-3 p-lg-4 my-5 shadow">
+          <div className="card p-2 p-md-3 p-lg-4 my-5 shadow" style={{background:"transparent"}}>
             <form onSubmit={handleSubmit}>
               <div className="row text-center ">
                 <h2>Welcome</h2>
@@ -96,16 +98,17 @@ export default function Register() {
                   <button type="submit" className="btn btn-dark w-100 " onClick={handleSubmit}>Sign up with Google</button>
                 </div>
               </div>
-              <div className="row mt-4">
+              <div className="row mt-1">
                 <div className="col d-flex">
-                  <p>If you have already account?</p>
-                  <Link to='/login' className='text-primary text-decoration-none '>  Sign in</Link>
+                  <p className='text-primary'>Already have Account <ArrowForwardIcon className='text-white'/>&ensp; </p>
+                  <Link to='login' className='text-primary text-decoration-none text-white '> Sign In</Link>
                 </div>
               </div>
             </form>
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }
