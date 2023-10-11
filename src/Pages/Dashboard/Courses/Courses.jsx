@@ -85,7 +85,7 @@ export default function Courses() {
                                         </button>
                                     </div>
                                     <div className="col col-lg-6 ">
-                                        <Link to="/dashboard/courses-list" className='btn btn-primary w-100'> See All Courses</Link>
+                                        <Link to="/courses-list" className='btn btn-primary w-100'> See All Courses</Link>
                                     </div>
                                 </div>
                             </div>
