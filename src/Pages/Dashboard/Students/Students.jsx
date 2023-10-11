@@ -62,7 +62,7 @@ export default function Students() {
               </div>
             </div>
             <div className="card p-lg-4 p-md-3 p-sm-2 shadow" style={{ backgroundColor: "#F1FAEE" }}  >
-              <div className="form "  >
+              <div className="form ">
                 <div className="row mb-4">
                   <div className="col ">
                     <input type="text" id='studentname' name='name' className='w-100 py-2  px-3' onChange={handlechange} placeholder='Enter Student Name' />
