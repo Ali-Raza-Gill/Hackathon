@@ -17,6 +17,6 @@ export const items=[
     {
       key: getRandomId(),
       icon: <PersonAddIcon />,
-      label: 'nav',
+      label: 'item 3',
     },
   ]
