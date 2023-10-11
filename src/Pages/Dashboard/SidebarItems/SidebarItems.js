@@ -1,3 +1,4 @@
+import { ManageAccounts } from '@mui/icons-material';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { Link } from 'react-router-dom';
 const getRandomId =()=> Math.random.toString(36).slice(2)
@@ -7,7 +8,7 @@ export const items=[
     {
       key: getRandomId(),
       icon: <PersonAddIcon />,
-      label: 'Student Management',
+      <Link to='Student Management' Element={<ManageAccounts/>}>Management</Link>
     },
     {
       key: getRandomId(),
