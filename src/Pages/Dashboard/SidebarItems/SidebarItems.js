@@ -8,7 +8,7 @@ export const items=[
     {
       key: getRandomId(),
       icon: <PersonAddIcon />,
-      <Link to='Student Management' Element={<ManageAccounts/>}>Management</Link>
+      label:<Link to='/Student Management' >Management</Link>
     },
     {
       key: getRandomId(),
